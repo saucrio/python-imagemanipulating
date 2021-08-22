@@ -1,13 +1,13 @@
-# Discord.py Images
+# Python ImageManipulating
 
-Discord.py Images is a Python library meant for discord.py developers for dealing with image-manipulation.
+Python ImageManipulating is a Python library for python developers to ease dealing with images and manipulating them.
 
 ## Installation
 
 Use the package manager [pip](https://pip.pypa.io/en/stable/) to install discord.py-images.
 
 ```bash
-pip install discord.py-images
+pip install python-imagemanipulating
 ```
 
 ## Usage
