@@ -1,9 +1,8 @@
 ![Build Status](https://img.shields.io/travis/com/saucrio/python-imagemanipulating?style=for-the-badge)
 ![Lines of code](https://img.shields.io/tokei/lines/github/saucrio/python-imagemanipulating?style=for-the-badge)
-![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/saucrio/python-imagemanipulating)
+![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/saucrio/python-imagemanipulating?style=for-the-badge)
 ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/python-imagemanipulating?style=for-the-badge)
 ![PyPI](https://img.shields.io/pypi/v/python-imagemanipulating?style=for-the-badge)
-![PyPI - License](https://img.shields.io/pypi/l/python-imagemanipulating?style=for-the-badge)
 # Python ImageManipulating
 
 Python ImageManipulating is a Python library for python developers to ease dealing with images and manipulating them.
