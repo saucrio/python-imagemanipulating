@@ -13,7 +13,7 @@ with open(path.join(HERE, 'README.md'), encoding='utf-8') as f:
 # This call to setup() does all the work
 setup(
     name="python_imagemanipulating",
-    version="0.0.3",
+    version="0.0.3a",
     description="Easily manipulate images with python_imagemanipulating",
     long_description=long_description,
     long_description_content_type="text/markdown",
