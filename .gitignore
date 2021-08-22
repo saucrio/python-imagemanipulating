@@ -138,3 +138,5 @@ fabric.properties
 __pycache__
 
 *.c
+_static
+_templates

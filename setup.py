@@ -17,7 +17,7 @@ setup(
     description="Easily manipulate images with python_imagemanipulating",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://python_imagemanipulating.readthedocs.io/",
+    url="https://python-imagemanipulating.readthedocs.io/",
     author="saucrio",
     # author_email="example@email.com",
     license="MIT",
