@@ -29,6 +29,3 @@ class Effects:
                 image.save(stream, format='PNG')
             return stream.getvalue()
 
-url = 'https://cdn.discordapp.com/avatars/199375184057073664/5dbc223a902c145115ee9e920c18c840.webp?size=1024'
-imagine = print(Effects().flip(url))
-

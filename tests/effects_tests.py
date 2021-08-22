@@ -1,5 +1,5 @@
 import unittest
-from discordpy_images import Effects
+from python_imagemanipulating import Effects
 
 class EffectsTestCase(unittest.TestCase):
 
