@@ -91,3 +91,20 @@ class Effects:
                     image = (image.rotate(-90)).convert('RGB')
                 image.save(stream, format='PNG')
             return stream.getvalue()
+
+    def grayscale(self, url:str) -> bytes:
+        """
+        Grayscales the image in the specified URL.
+        
+        :param url: The url of the image you want to grayscale.
+        :type url: str
+    
+        :return: Grayscaled image bytes.
+        :rtype: bytes
+        """
+        
+        with io.BytesIO() as stream:
+            with Image.open(requests.get(url, stream=True).raw) as image:
+                image = image.convert('L')
+                image.save(stream, format='PNG')
+            return stream.getvalue()
