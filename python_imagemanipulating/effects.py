@@ -54,20 +54,40 @@ class Effects:
 
     def pixelate(self, url:str) -> bytes:
         """
-        Pixelates the image in the specified URL. Images are automatically converted to RGB, because if a GIF is given, Pillow sets the color mode to P or L.
+        Pixelates the image in the specified URL.
         
-        :param url: The url of the image you want to flip.
+        :param url: The url of the image you want to pixelate.
         :type url: str
-
-        :param radius: Blurs the image depending on the given radius. Higher radius returns a more blurred image. Radius can only be =< 10 because higher values have a higher tendency to crash.
-        :type radius: int
     
-        :return: Blurred image bytes.
+        :return: Pixelated image bytes.
         :rtype: bytes
         """
         
         with io.BytesIO() as stream:
             with Image.open(requests.get(url, stream=True).raw) as image:
                 image = (image.resize((64, 64))).resize(image.size, Image.NEAREST)
+                image.save(stream, format='PNG')
+            return stream.getvalue()
+
+    def rotate(self, url:str, orientation:str='right') -> bytes:
+        """
+        Rotates the image in the specified URL to the right or the left depending on the specified orientation. Images are automatically converted to RGB, because if a GIF is given, Pillow sets the color mode to P or L.
+        
+        :param url: The url of the image you want to rotate.
+        :type url: str
+
+        :param url: Rotates the image in the specified orientation. Can be either left or right.
+        :type orientation: str
+    
+        :return: Pixelated image bytes.
+        :rtype: bytes
+        """
+        
+        with io.BytesIO() as stream:
+            with Image.open(requests.get(url, stream=True).raw) as image:
+                if orientation == 'right':
+                    image = (image.rotate(90)).convert('RGB')
+                elif orientation == 'left':
+                    image = (image.rotate(-90)).convert('RGB')
                 image.save(stream, format='PNG')
             return stream.getvalue()

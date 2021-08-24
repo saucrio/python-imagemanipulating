@@ -19,6 +19,7 @@ class EffectsTestCase(unittest.TestCase):
             assert type(Effects().flip(image, orientation='horizontal')) == bytes
             assert type(Effects().blur(image, radius=random_int)) == bytes
             assert type(Effects().pixelate(image)) == bytes
+            assert type(Effects().rotate(image, orientation='left')) == bytes
 
 if __name__ == '__main__':
     unittest.main()
