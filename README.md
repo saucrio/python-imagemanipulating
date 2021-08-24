@@ -5,7 +5,7 @@
 ![PyPI](https://img.shields.io/pypi/v/python-imagemanipulating?style=for-the-badge)
 # Python ImageManipulating
 
-Python ImageManipulating is a Python library for python developers to ease dealing with images and manipulating them.
+Python ImageManipulating is a Python library to ease dealing with images and manipulating them. It was originally meant for discord.py developers, however I do not advise to use this library, as it is not async, and your bot will freeze if you have many requests. I recommend however, using this library in an API, and then from your bot code, send requests to the API.
 
 ## Installation
 
@@ -18,7 +18,10 @@ pip install python-imagemanipulating
 ## Usage
 
 ```python
-soon
+from python_imagemanipulating import Effects
+url = 'enter your url here'
+flipped_image_bytes = Effects().flip(url)
+
 ```
 
 ## Contributing
