@@ -108,3 +108,20 @@ class Effects:
                 image = image.convert('L')
                 image.save(stream, format='PNG')
             return stream.getvalue()
+
+    def invert(self, url:str) -> bytes:
+        """
+        Inverts the image in the specified URL.
+        
+        :param url: The url of the image you want to invert. Images are automatically converted to RGB, because if a GIF is given, Pillow sets the color mode to P or L.
+        :type url: str
+    
+        :return: Inverted image bytes.
+        :rtype: bytes
+        """
+        
+        with io.BytesIO() as stream:
+            with Image.open(requests.get(url, stream=True).raw) as image:
+                image = ImageOps.invert(image.convert('RGB'))
+                image.save(stream, format='PNG')
+            return stream.getvalue()

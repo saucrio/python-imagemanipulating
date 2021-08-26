@@ -22,6 +22,7 @@ class EffectsTestCase(unittest.TestCase):
             assert type(Effects().rotate(image)) == bytes
             assert type(Effects().rotate(image, orientation='left')) == bytes
             assert type(Effects().grayscale(image)) == bytes
+            assert type(Effects().invert(image)) == bytes
 
 if __name__ == '__main__':
     unittest.main()
