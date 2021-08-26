@@ -125,3 +125,20 @@ class Effects:
                 image = ImageOps.invert(image.convert('RGB'))
                 image.save(stream, format='PNG')
             return stream.getvalue()
+
+    def emboss(self, url:str) -> bytes:
+        """
+        Embosses the image in the specified URL.
+        
+        :param url: The url of the image you want to emboss. Images are automatically converted to RGB, because if a GIF is given, Pillow sets the color mode to P or L.
+        :type url: str
+    
+        :return: Embossed image bytes.
+        :rtype: bytes
+        """
+        
+        with io.BytesIO() as stream:
+            with Image.open(requests.get(url, stream=True).raw) as image:
+                image = image.convert('RGB').filter(ImageFilter.EMBOSS)
+                image.save(stream, format='PNG')
+            return stream.getvalue()
