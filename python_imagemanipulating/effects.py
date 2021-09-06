@@ -181,3 +181,20 @@ class Effects:
 
                 image.save(stream, format='PNG')
             return stream.getvalue()
+    
+    def contour(self, url:str) -> bytes:
+        """
+        Contours the image in the specified URL.
+        
+        :param url: The url of the contoured image. Images are automatically converted to RGB, because if a GIF is given, Pillow sets the color mode to P or L.
+        :type url: str
+    
+        :return: Contoured image bytes.
+        :rtype: bytes
+        """
+        
+        with io.BytesIO() as stream:
+            with Image.open(requests.get(url, stream=True).raw) as image:
+                image = image.convert('RGB').filter(ImageFilter.CONTOUR)
+                image.save(stream, format='PNG')
+            return stream.getvalue()
