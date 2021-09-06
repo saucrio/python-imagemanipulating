@@ -26,6 +26,7 @@ class EffectsTestCase(unittest.TestCase):
             assert type(Effects().emboss(image)) == bytes
             assert type(Effects().sepia(image)) == bytes
             assert type(Effects().contour(image)) == bytes
+            assert type(Effects().edges(image)) == bytes
 
 if __name__ == '__main__':
     unittest.main()

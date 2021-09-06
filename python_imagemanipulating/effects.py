@@ -198,3 +198,20 @@ class Effects:
                 image = image.convert('RGB').filter(ImageFilter.CONTOUR)
                 image.save(stream, format='PNG')
             return stream.getvalue()
+    
+    def edges(self, url:str) -> bytes:
+        """
+        Edges the image in the specified URL.
+        
+        :param url: The url of the edged image. Images are automatically converted to RGB, because if a GIF is given, Pillow sets the color mode to P or L.
+        :type url: str
+    
+        :return: Edged image bytes.
+        :rtype: bytes
+        """
+        
+        with io.BytesIO() as stream:
+            with Image.open(requests.get(url, stream=True).raw) as image:
+                image = image.convert('RGB').filter(ImageFilter.FIND_EDGES)
+                image.save(stream, format='PNG')
+            return stream.getvalue()
