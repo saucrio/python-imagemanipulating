@@ -142,3 +142,42 @@ class Effects:
                 image = image.convert('RGB').filter(ImageFilter.EMBOSS)
                 image.save(stream, format='PNG')
             return stream.getvalue()
+
+    def sepia(self, url:str) -> bytes:
+        """
+        Applies the sepia effect to the image in the specified URL.
+        
+        :param url: The url of the image you want to apply the sepia effect to. Images are automatically converted to RGB, because if a GIF is given, Pillow sets the color mode to P or L.
+        :type url: str
+    
+        :return: Sepia image bytes.
+        :rtype: bytes
+        """
+
+        with io.BytesIO() as stream:
+            with Image.open(requests.get(url, stream=True).raw) as image:
+                image = image.convert('RGB')
+                width, height = image.size
+                pixels = image.load() # creating the pixel map
+
+                for py in range(height):
+                    for px in range(width):
+                        r, g, b = image.getpixel((px, py))
+
+                        tr = int(0.393 * r + 0.769 * g + 0.189 * b)
+                        tg = int(0.349 * r + 0.686 * g + 0.168 * b)
+                        tb = int(0.272 * r + 0.534 * g + 0.131 * b)
+
+                        if tr > 255:
+                            tr = 255
+
+                        if tg > 255:
+                            tg = 255
+
+                        if tb > 255:
+                            tb = 255
+
+                        pixels[px, py] = (tr,tg,tb)
+
+                image.save(stream, format='PNG')
+            return stream.getvalue()
